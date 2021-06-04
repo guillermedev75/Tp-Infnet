@@ -6,43 +6,49 @@ while True:
     #Retorna erros
     try:
         
-        #Variaveis
+        #Entrada do total gasto
         total = float(input("Informe o valor total do consumo: R$ "))
         
         #Verificação do total
         if total > 0:
-            pessoas = int(input("Informe o total de pessoas: "))
+
+            #Entrada da quantidade de clientes
+            clientes = int(input("Informe o total de clientes: "))
             
-            #Verificação do número de pessoas
-            if pessoas >= 1:
+            #Verificação do número de clientes
+            if clientes >= 1:
+
+                #Entrada da taxa de serviço
                 percentual = float(input("Informe o percentual do serviço, entre 0 e 100: "))
                 
                 #Verificação da taxa de serviço
                 if percentual >=0 and percentual <=100:
+
+                    #Tratamento dos valores
                     totalConsumo = float(total + (total * percentual / 100))
-                    totalPessoa = float(totalConsumo / pessoas)
+                    totalClientes = float(totalConsumo / clientes)
                     totalConsumo = ("%0.2f" % totalConsumo).replace(".", ",")
-                    totalPessoa = ("%0.2f" % totalPessoa).replace(".", ",")
+                    totalClientes = ("%0.2f" % totalClientes).replace(".", ",")
 
                     #Onde é impresso p resultado da aplicação
-                    print(f"O valor total da conta, com a taxa de serviço, será de R$ {totalConsumo}.\n")
-                    print(f"\033[1mDividindo a conta por {pessoas} pessoa(s), cada pessoa deverá pagar R$ {totalPessoa}.\033[m")
+                    print(f"O valor total da conta, incluindo a taxa de serviço, será de R$ {totalConsumo}.\n")
+                    print(f"Dividindo a conta por {clientes} clientes, cada cliente deve pagar R$ {totalClientes}.")
                 
                 #Onde é impresso o erro de porcentagem
                 else:
-                    print('\033[0;31mA porcentagem deve ser entre "0" e "100".\033[m')
+                    print('A porcentagem deve ser entre "0" e "100".')
             
             #Onde é impresso o erro de pessoas
             else:
-                print("\033[0;31mValor inválido. Necessário ao menos uma pessoa.\033[m")
+                print("Valor inválido. Necessário ao menos uma pessoa.")
         
         #Onde é impresso o valor total
         else:
-            print("\033[0;31mVocê precisa ter consumido!\033[m")
+            print("Você precisa ter consumido!")
         
         #Entrada de continuidade
         print("\n----------------------------------------------------------------------------------")
-        prossegue = input('Pressione "\033[0;31mENTER\033[m" para continuar ou "\033[0;31mF\033[m" para finalizar. ')
+        prossegue = input('Pressione "ENTER" para continuar ou "F" para finalizar. ')
 
         #Varificação de continuidade
         if prossegue == 'f' or prossegue == 'F':
@@ -52,4 +58,4 @@ while True:
     
     #Aviso de erro
     except ValueError:
-        print("\033[0;31m \nEntrada inválida\033[m \n")
+        print("\nEntrada inválida \n")
